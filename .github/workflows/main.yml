@@ -3,19 +3,12 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          sudo apt-get install doxygen
-          wget http://www.mirari.fr/VmX0 -O psptoolchain.deb
-          sudo dpkg --install psptoolchain.deb
-      - name: Build project
-        run: |
-          source /etc/profile.d/psptoolchain.sh
-          make -k
+      - uses: krystalgamer/setup-psptoolchain@1.0
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: make
       - name: Build documentation
         run : |
           mkdir github-pages
