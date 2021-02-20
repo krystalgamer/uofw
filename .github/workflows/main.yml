@@ -14,6 +14,8 @@ jobs:
           mkdir github-pages
           cd github-pages
           doxygen ../docs/Doxyfile
+      - name: Install Doxygen
+        run: apt install doxygen
       - name: Deploy documentation
         if: github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@3.7.1
