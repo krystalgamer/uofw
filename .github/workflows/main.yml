@@ -10,7 +10,7 @@ jobs:
       - name: Compile uOFW
         run: make
       - name: Install Doxygen
-        run: apt install doxygen
+        run: sudo apt install doxygen
       - name: Build documentation
         run : |
           mkdir github-pages
